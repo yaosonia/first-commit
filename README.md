@@ -2,7 +2,7 @@
 
 YAO SONIA
 
-<a href="https://codeclimate.com/github/yaosonia/first-commit/maintainability"><img src="https://api.codeclimate.com/v1/badges/95940746c661be2ab801/maintainability" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/95940746c661be2ab801/maintainability)](https://codeclimate.com/github/yaosonia/first-commit/maintainability)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
