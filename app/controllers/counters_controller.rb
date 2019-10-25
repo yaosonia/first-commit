@@ -1,7 +1,8 @@
 class CountersController < ApplicationController
   before_action :set_counter, only: [:show, :edit, :update, :destroy]
   skip_before_action  :verify_authenticity_token, :only => [:update]
-  
+  #si on fait curl -X PATCH http://localhost:3000/counters/1
+
   # GET /counters
   # GET /counters.json
   def index
@@ -42,7 +43,8 @@ class CountersController < ApplicationController
   # PATCH/PUT /counters/1.json
   def update
     respond_to do |format|
-      if @counter.update(counter_params)
+      @counter.increment!
+      if @counter.save()
         format.html { redirect_to @counter, notice: 'Counter was successfully updated.' }
         format.json { render :show, status: :ok, location: @counter }
       else
@@ -62,30 +64,6 @@ class CountersController < ApplicationController
     end
   end
 
-  def update
-
-    respond_to do |format|
-
-      @counter.increment!
-
-      if @counter.save()
-
-        format.html { redirect_to @counter, notice: 'Counter was successfully updated.' }
-
-        format.json { render :show, status: :ok, location: @counter }
-
-      else
-
-        format.html { render :edit }
-
-        format.json { render json: @counter.errors, status: :unprocessable_entity }
-
-      end
-
-    end
-
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_counter
@@ -95,6 +73,5 @@ class CountersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def counter_params
       params.require(:counter).permit(:name, :value)
-    end   
-
+    end
 end

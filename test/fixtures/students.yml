@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  lastname: MyString
+  last_name: MyString
   birthday: 2019-09-27
 
 two:
   name: MyString
-  lastname: MyString
+  last_name: MyString
   birthday: 2019-09-27

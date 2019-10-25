@@ -1,16 +1,24 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=83baad8519999a5b5e6d714d446637d03275c0314a11cb5fc61d0f410105e633
+    - CC_TEST_REPORTER_ID=f88518ae49750d2ef79e7d5890324871fab2fd421fe66737575f7d007a60d3ff
+
 language: ruby
-rvm:
-- 2.3.3
+rvm: 2.5.5
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rake
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rake
+
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESUL
+- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+
+deploy:
+  provider: heroku
+  app: backend-kfritsch
+  api_key:
+    secure: eXIi0mGfJZiv217/kJpAckT5JDIfMppx8UsFTpCGuf5hNAo1fGmmzacx7Kg9kCIpKOSP9d/rhn37VYllJZCn/HjkNrec4TGB3GPDSBr+k9DzIal2t9WXDjGWRnjycsRcSjJDkWbQTvq0IdcTOG0N63IOZS2FqoALpqBFeFTYl6wEok5XlfQxmPjdgo+N9pE8GKzfiWTikA1bPCfBbO5Yl4V8T8wyz1ZvrgYRWiM/M23QpjzD9GqPMlEU8zR7dY3vuEV1tqb8VlWXuwCUZGhWbXcuNyHQlpQJ6KxqXFLT6JkKRIiCTnlhyhAnwkImXf2YynQEhTZtrPGqD7DBUP+3jNb6/SwK8MWwG0/jdZJbbq0sjcKCfJnUiJ68Bwej13V/Y4UPEsQLCLeLESKKLjQgMJEzC+XgV6d9Qn8WS0qD39QRHvCJG6w71jiD/2Jd+9na+OGsEWtEuEzYYQ5WKEWZqST3CLrdIaNbCd8gve5sQqRIifLi0LETOgZfqw2E2JB9eWUxbxugkqAdN5D3gxyfvcli7lLON9N8RTj6cMJBx+j5XzzrnUbozgsNi81yWsOmSlH1lldrvA7jcgUFOYtI4Sf+6S4WrfL4EUl9Sae3q2/ifLo7Cd3TdLY1RLIMetzus2M4auktE3tWJYEsCcCNHRuEN/ucxJz84SUjWiL41HE=
