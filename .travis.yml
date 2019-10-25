@@ -21,4 +21,4 @@ deploy:
   provider: heroku
   app: backend-kfritsch
   api_key:
-    secure:16b432b3-6859-4f0e-83f3-9d56540a71a0
+    secure: f432cfd2-0afc-4dd6-b457-9f638aa6f323
