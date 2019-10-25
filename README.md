@@ -6,6 +6,8 @@ YAO SONIA
 
 [![Build Status](https://travis-ci.com/yaosonia/first-commit.svg?branch=master)](https://travis-ci.com/yaosonia/first-commit)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/95940746c661be2ab801/test_coverage)](https://codeclimate.com/github/yaosonia/first-commit/test_coverage)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
