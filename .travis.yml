@@ -19,6 +19,6 @@ after_script:
 
 deploy:
   provider: heroku
-  app: backend-kfritsch
+  app: backendoni
   api_key:
     secure: f432cfd2-0afc-4dd6-b457-9f638aa6f323
